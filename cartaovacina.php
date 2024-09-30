@@ -1,3 +1,13 @@
+<?php
+include_once('assets/php/conexao.php');
+
+$sql = "SELECT * FROM vacina ORDER BY nome DESC";
+$result =  $mysqli->query($sql);
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,7 +55,43 @@
 <link rel="stylesheet" href="assets/css/plugins/plugins.min.css">
 <link rel="stylesheet" href="assets/css/style.min.css">  
 -->
+<style>
+ 
+    .card {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        max-width: 600px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .card h2 {
+        text-align: center;
+        color: #333;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: auto;
+        margin-right: auto;
 
+    }
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+</style>
 
 </head>
 
@@ -81,7 +127,7 @@
                         <!-- Header Logo Start -->
                         <div class="col-lg-3 col-md-4 col-6">
                             <div class="header-logo">
-                                <a href="index.html"><img src="assets/images/logo/logo.png" alt="Site Logo" /></a>
+                                <a href="index.php"><img src="assets/images/logo/logo.png" alt="Site Logo" /></a>
                             </div>
                         </div>
                         <!-- Header Logo End -->
@@ -141,87 +187,39 @@
     </div>
     <!-- Header Section End -->
 
-    <!-- Breadcrumb Area Start -->
-    <div class="section breadcrumb-area bg-bright">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <div class="breadcrumb-wrapper">
-                        <h2 class="breadcrumb-title">Registre uma vacina</h2>
-                    
-                    </div>
-                </div>
-            </div>
-        </div>
+    
+    <!--CARTAO DE VACINA-->
+
+    <div class="card">
+        <h2>Cartão de Vacina</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Vacina</th>
+                    <th>Descrição</th>
+                    <th>Data</th>
+                    <th>Vencimento</th>
+                </tr>
+            </thead>
+            <tbody>
+              <?php
+              while($userdata = mysqli_fetch_assoc($result)){
+                echo "<tr>";
+                echo "<td>".$userdata['nome']."</td>";
+                echo "<td>".$userdata['descricao']."</td>";
+                echo "<td>".$userdata['data']."</td>";
+                echo "<td>".$userdata['vencimento']."</td>";
+
+
+                echo "<tr>";
+              }
+
+
+              ?>
+            </tbody>
+        </table>
     </div>
-    <!-- Breadcrumb Area End -->
-
-    <!-- Blog Details Section Start -->
-    <div class="section section-margin">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-9 m-auto overflow-hidden">
-                    <!-- Blog Details Wrapper Start -->
-                    <div class="blog-details-wrapper">
-
-
-
-                        <!-- Comments Post Area Start -->
-                        <div class="comment-post-area">
-                            <h2 class="blog-desc-title mb-6 pt-8">Registre sua vacina</h2>
-                            <form action="#">
-                                <div class="row">
-
-                                    <!-- PetInput Start -->
-                                    <div class="col-md-4 col-custom">
-                                        <div class="input-item mb-4">
-                                            <input class="rounded-0 w-100 input-area nome" type="text" placeholder="Nome">
-                                        </div>
-                                    </div>
-                                    <!-- Pet Input End -->
-
-                                    <!-- DataInput Start -->
-                                    <div class="col-md-4 col-custom">
-                                        <div class="input-item mb-4">
-                                            <input class="rounded-0 w-100 input-area data" type="text" placeholder="Data" onfocus="this.type = 'date'" onblur="this.type = 'text'">
-                                        </div>
-                                    </div>
-                                    <!-- Medico Input End -->
-
-                                    <!-- Vencimento Input Start -->
-                                    <div class="col-md-4 col-custom">
-                                        <div class="input-item mb-4">
-                                            <input class="rounded-0 w-100 input-area vencimento" type="text" placeholder="Vencimento" onfocus="this.type = 'date'" onblur="this.type = 'text'">
-                                        </div>
-                                    </div>
-                                    <!-- Data Input End -->
-
-                                    <!-- Message Input Start -->
-                                    <div class="col-12 col-custom">
-                                        <div class="input-item mb-4">
-                                            <textarea cols="30" rows="10" name="comment" class="rounded-0 w-100 custom-textarea input-area" placeholder="Descrição" spellcheck="false" data-gramm="false"></textarea>
-                                        </div>
-                                    </div>
-                                    <!-- Message Input End -->
-
-                                    <!-- Submit Button Start -->
-                                    <div class="col-12 col-custom mt-4">
-                                        <button type="submit" class="btn btn-primary btn-hover-dark">Salvar Vacina</button>
-                                    </div>
-                                    <!-- Submit Button End -->
-
-                                </div>
-                            </form>
-                        </div>
-                        <!-- Comments Post Area End -->
-
-                    </div>
-                    <!-- Blog Details Wrapper End -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Blog Details Section End -->
+    <!--CARTAO DE VACINA-->
 
    <!-- Footer Section Start -->
    <footer class="section footer-section">

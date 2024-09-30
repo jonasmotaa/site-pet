@@ -1,3 +1,15 @@
+<?php
+session_start();
+if((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true)){
+    unset($_SESSION['email']);
+    unset($_SESSION['senha']);
+    header('Location: login.php'); // se nao existir sessao, retorna para login.php
+
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -81,7 +93,7 @@
                         <!-- Header Logo Start -->
                         <div class="col-lg-3 col-md-4 col-6">
                             <div class="header-logo">
-                                <a href="index.html"><img src="assets/images/logo/logo.png" alt="Site Logo" /></a>
+                                <a href="index.php"><img src="assets/images/logo/logo.png" alt="Site Logo" /></a>
                             </div>
                         </div>
                         <!-- Header Logo End -->
@@ -95,7 +107,7 @@
                                
 
                                 <!-- Header My Account Button Start -->
-                                <a href="my-account.html" class="header-action-btn header-action-btn-wishlist">
+                                <a href="my-account.php" class="header-action-btn header-action-btn-wishlist">
                                     <i class="icon-user icons"></i>
                                 </a>
                                 <!-- Header My Account Button End -->
@@ -460,8 +472,8 @@
                                     <li><a href="historico medico.html">Histórico médico</a></li>
                                     <li><a href="medicamento.html">Medicamentos</a></li>
 
-                                    <li><a href="my-account.html">Minha conta</a></li>
-                                    <li><a href="login.html">Login | Registro</a></li>
+                                    <li><a href="my-account.php">Minha conta</a></li>
+                                    <li><a href="login.php">Login | Registro</a></li>
                                 </ul>
                             </li>
                            

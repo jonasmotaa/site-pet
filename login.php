@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vacinas - PetCare</title>
+    <title> - Login - PetCare</title>
 
     <!-- Favicons -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
@@ -61,7 +61,7 @@
                     <!-- Header Top Message Start -->
                     <div class="col-12 col-lg-6">
                         <div class="header-top-msg-wrapper">
-                            <p class="header-top-message">Vacinas</p>
+                            <p class="header-top-message">Acesso</p>
                         </div>
                     </div>
                     
@@ -81,7 +81,7 @@
                         <!-- Header Logo Start -->
                         <div class="col-lg-3 col-md-4 col-6">
                             <div class="header-logo">
-                                <a href="index.html"><img src="assets/images/logo/logo.png" alt="Site Logo" /></a>
+                                <a href="index.php"><img src="assets/images/logo/logo.png" alt="Site Logo" /></a>
                             </div>
                         </div>
                         <!-- Header Logo End -->
@@ -141,70 +141,61 @@
     </div>
     <!-- Header Section End -->
 
-    <!--Slider removido-->
+    
 
-    <!-- Blog Grid Section Start -->
+    <!-- Login Section Start -->
     <div class="section section-margin">
         <div class="container">
-            <div class="row row-cols-lg-3 row-cols-sm-2 row-cols-1 mb-n8">
+            <div class="row">
+                <div class="col-lg-7 col-md-8 m-auto">
+                    <div class="login-wrapper">
 
-                <div class="col mb-8">
-                    <!-- Single Blog Start -->
-                    <div class="single-blog-wrapper">
-
-                        <!-- Blog Thumb Start -->
-                        <div class="blog-thumb thumb-effect">
-                            <a class="image" href="registrovacina.html">
-                                <img class="fit-image" src="assets/images/vacina/registreumavacina.png" alt="Blog Image">
-                            </a>
+                        <!-- Login Title & Content Start -->
+                        <div class="section-content text-center mb-6">
+                            <h2 class="title mb-2">Login</h2>
                         </div>
-                        <!-- Blog Thumb End -->
+                        <!-- Login Title & Content End -->
 
-                        <!-- Blog Content Start -->
-                        <div class="blog-content">
-                            
-                            <h2 class="blog-title"><a href="registrovacina.html">Registre uma Vacina</a></h2>
-                        </div>
-                        <!-- Blog Content End -->
+                        <!-- Form Action Start -->
+                        <form action="testlogin.php" method="POST">
+
+                            <!-- Input Email Start -->
+                            <div class="single-input-item mb-2">
+                                <input type="email" name="email" id="email"  placeholder="Email" required>
+                            </div>
+                            <!-- Input Email End -->
+
+                            <!-- Input Password Start -->
+                            <div class="single-input-item mb-2">
+                                <input type="password" name="senha" id="senha" placeholder="Senha" required>
+                            </div>
+                            <!-- Input Password End -->
+
+                            <!-- Button/Forget Password Start -->
+                            <div class="single-input-item mb-3">
+                                <div class="login-reg-form-meta mb-n3">
+
+                                    <button class="btn btn btn-gray-deep btn-hover-primary mb-3" type="submit" name="submit" value="entrar" >Entrar</button>
+
+                                </div>
+                            </div>
+                            <!-- Button/Forget Password End -->
+
+                            <!-- Lost Password & Creat New Account Start -->
+                            <div class="lost-password">
+                                <a href="register.php">Criar conta</a>
+                            </div>
+                            <!-- Lost Password & Creat New Account End -->
+
+                        </form>
+                        <!-- Form Action End -->
 
                     </div>
-                    <!-- Single Blog End -->
                 </div>
-
-                <div class="col mb-8">
-                    <!-- Single Blog Start -->
-                    <div class="single-blog-wrapper">
-
-                        <!-- Blog Thumb Start -->
-                        <div class="blog-thumb thumb-effect">
-                            <a class="image" href="vacina.html">
-                                <img class="fit-image" src="assets/images/vacina/cartaodevacina.png" alt="Blog Image">
-                            </a>
-                        </div>
-                        <!-- Blog Thumb End -->
-
-                        <!-- Blog Content Start -->
-                        <div class="blog-content">
-                            
-                            <h2 class="blog-title"><a href="vacina.html">Cartão de vacina</a></h2>
-                        </div>
-                        <!-- Blog Content End -->
-
-                    </div>
-                    <!-- Single Blog End -->
-                </div>
-
             </div>
-            
         </div>
     </div>
-    <!-- Blog Grid Section End -->
-
-
-           
-
-
-
+    <!-- Login Section End -->
 
     <!-- Footer Section Start -->
     <footer class="section footer-section">
@@ -287,7 +278,7 @@
                                 <a href="#">Páginas <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                 <ul class="dropdown">
                                     <li><a href="consulta.html">Consulta</a></li>
-                                    <li><a href="registrovacina.html">Vacina</a></li>
+                                    <li><a href="vacina.html">Vacinas</a></li>
                                     <li><a href="atividade.html">Atividade</a></li>
                                     <li><a href="historico medico.html">Histórico médico</a></li>
                                     <li><a href="medicamento.html">Medicamentos</a></li>
@@ -312,15 +303,7 @@
                   
                     <!-- Contact Links End -->
 
-                    <!-- Social Widget Start -->
-                    <div class="widget-social">
-                        <a title="Facebook" href="#"><i class="fa fa-facebook-f"></i></a>
-                        <a title="Twitter" href="#"><i class="fa fa-twitter"></i></a>
-                        <a title="Linkedin" href="#"><i class="fa fa-linkedin"></i></a>
-                        <a title="Youtube" href="#"><i class="fa fa-youtube"></i></a>
-                        <a title="Vimeo" href="#"><i class="fa fa-vimeo"></i></a>
-                    </div>
-                    <!-- Social Widget Ende -->
+                  
                 </div>
                 <!-- Contact Links/Social Links End -->
             </div>
