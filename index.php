@@ -471,6 +471,7 @@ if((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true)
                                     <li><a href="atividade.html">Atividade</a></li>
                                     <li><a href="historico medico.html">Histórico médico</a></li>
                                     <li><a href="medicamento.html">Medicamentos</a></li>
+                                    <li><a href="admin-messages.php">Criar Mensagens</a>
 
                                     <li><a href="my-account.php">Minha conta</a></li>
                                     <li><a href="login.php">Login | Registro</a></li>
