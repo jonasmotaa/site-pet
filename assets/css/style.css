@@ -15531,10 +15531,6 @@ ul li {
   background: #f6ab49;
 }
 
-input[type=checkbox] {
-  display: none;
-}
-
 input[type=checkbox] + label {
   position: relative;
   padding-left: 30px;
