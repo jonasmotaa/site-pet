@@ -248,15 +248,7 @@ try{
                            
                         </div>
                     </div>
-                    <div class="col-12 col-sm-6 col-lg-3 mb-8" data-aos="fade-up" data-aos-duration="1200">
-                        <div class="single-footer-widget">
-                            <h2 class="widget-title">Links úteis</h2>
-                            <ul class="widget-list">
-                                <li><a href="wishlist.html">Ajuda e Contato</a></li>
-                                <li><a href="contact.html">Termos e condições</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                    
                 
                    
                 </div>
@@ -342,13 +334,7 @@ try{
                     <!-- Contact Links End -->
 
                     <!-- Social Widget Start -->
-                    <div class="widget-social">
-                        <a title="Facebook" href="#"><i class="fa fa-facebook-f"></i></a>
-                        <a title="Twitter" href="#"><i class="fa fa-twitter"></i></a>
-                        <a title="Linkedin" href="#"><i class="fa fa-linkedin"></i></a>
-                        <a title="Youtube" href="#"><i class="fa fa-youtube"></i></a>
-                        <a title="Vimeo" href="#"><i class="fa fa-vimeo"></i></a>
-                    </div>
+                    
                     <!-- Social Widget Ende -->
                 </div>
                 <!-- Contact Links/Social Links End -->

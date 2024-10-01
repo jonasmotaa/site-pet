@@ -11,9 +11,13 @@ if((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true)
 include_once('assets/php/conexao.php');
 
 $email = $_SESSION['email'];
-$sql = "SELECT nome FROM pet WHERE dono = '$email'";
+$sql = "SELECT apelido FROM pet WHERE dono = '$email'";
 $result =  $mysqli->query($sql);
 
+if($result->num_rows == 0){
+header('Location: vacina.php'); // se nao existir pet, retorna para vacina.php
+
+}
 
 if(isset($_POST['submit'])){
 
@@ -22,9 +26,18 @@ if(isset($_POST['submit'])){
     $descricao = $_POST['descricao'];
     $data = $_POST['data'];
     $vencimento = $_POST['vencimento'];
+    $pet = $_POST['pet'];
 
-    mysqli_query($mysqli, "INSERT INTO vacina(nome, descricao, data, vencimento)
-    VALUES ('$nome','$descricao','$data','$vencimento')");
+
+    $idsql = "SELECT id FROM pet WHERE apelido = '$pet' AND dono = '$email'";
+    $ids =  $mysqli->query($idsql);
+    $row = $ids->fetch_assoc();
+    $id = $row['id'];
+    // aqui foi necessario converter o dado para uma string.
+  
+
+    mysqli_query($mysqli, "INSERT INTO vacina(nomevacina, descricao, data, vencimento, id)
+    VALUES ('$nome','$descricao','$data','$vencimento', '$id')");
 }
 ?>
 
@@ -127,7 +140,7 @@ if(isset($_POST['submit'])){
                                
 
                                 <!-- Header My Account Button Start -->
-                                <a href="my-account.html" class="header-action-btn header-action-btn-wishlist">
+                                <a href="my-account.php" class="header-action-btn header-action-btn-wishlist">
                                     <i class="icon-user icons"></i>
                                 </a>
                                 <!-- Header My Account Button End -->
@@ -215,7 +228,7 @@ if(isset($_POST['submit'])){
                                     <!-- PetInput Start -->
                                     <div class="col-md-3 col-custom">
                                     <div class="rounded-0 w-100 input-area nome">
-                                        <select name = "pets">
+                                        <select name = "pet" id="pet">
                                             <?php
                                             $pets = $result;
                                             ?>
@@ -290,15 +303,7 @@ if(isset($_POST['submit'])){
                        
                     </div>
                 </div>
-                <div class="col-12 col-sm-6 col-lg-3 mb-8" data-aos="fade-up" data-aos-duration="1200">
-                    <div class="single-footer-widget">
-                        <h2 class="widget-title">Links úteis</h2>
-                        <ul class="widget-list">
-                            <li><a href="wishlist.html">Ajuda e Contato</a></li>
-                            <li><a href="contact.html">Termos e condições</a></li>
-                        </ul>
-                    </div>
-                </div>
+                
             
                 
             </div>
@@ -499,14 +504,11 @@ if(isset($_POST['submit'])){
                             <li class="has-children">
                                 <a href="#">Páginas <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                 <ul class="dropdown">
-                                    <li><a href="consulta.html">Consulta</a></li>
-                                    <li><a href="vacina.html">Vacina</a></li>
-                                    <li><a href="atividade.html">Atividade</a></li>
-                                    <li><a href="historico medico.html">Histórico médico</a></li>
-                                    <li><a href="medicamento.html">Medicamentos</a></li>
+                                    <li><a href="consulta.php">Consulta</a></li>
+                                    <li><a href="vacina.php">Vacina</a></li>
+                              
 
-                                    <li><a href="my-account.html">Minha conta</a></li>
-                                    <li><a href="login.html">Login | Registro</a></li>
+                                    <li><a href="my-account.php">Minha conta</a></li>
                                 </ul>
                             </li>
                            
@@ -526,13 +528,7 @@ if(isset($_POST['submit'])){
                     <!-- Contact Links End -->
 
                     <!-- Social Widget Start -->
-                    <div class="widget-social">
-                        <a title="Facebook" href="#"><i class="fa fa-facebook-f"></i></a>
-                        <a title="Twitter" href="#"><i class="fa fa-twitter"></i></a>
-                        <a title="Linkedin" href="#"><i class="fa fa-linkedin"></i></a>
-                        <a title="Youtube" href="#"><i class="fa fa-youtube"></i></a>
-                        <a title="Vimeo" href="#"><i class="fa fa-vimeo"></i></a>
-                    </div>
+                    
                     <!-- Social Widget Ende -->
                 </div>
                 <!-- Contact Links/Social Links End -->

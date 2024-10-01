@@ -38,7 +38,7 @@ if(isset($_POST['submit'])){
 
 
 
-    mysqli_query($mysqli, "INSERT INTO pet(nome, idade, especie, peso, altura, dono)
+    mysqli_query($mysqli, "INSERT INTO pet(apelido, idade, especie, peso, altura, dono)
     VALUES ('$nome','$idade','$especie', '$peso', '$altura', '$email')");
 }
 ?>
@@ -97,7 +97,7 @@ if(isset($_POST['submit'])){
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         padding: 20px;
-        max-width: 600px;
+        max-width: 800px;
         width: 100%;
         margin-left: auto;
         margin-right: auto;
@@ -256,7 +256,7 @@ if(isset($_POST['submit'])){
                                          while($userdata = mysqli_fetch_assoc($result)){
 
                                              echo "<tr>";
-                                             echo "<td>".$userdata['nome']."</td>";
+                                             echo "<td>".$userdata['apelido']."</td>";
                                              echo "<td>".calcularIdade($userdata['idade'])."</td>";
                                             echo "<td>".$userdata['especie']."</td>";
                                             echo "<td>".$userdata['peso']."</td>";
@@ -400,15 +400,7 @@ if(isset($_POST['submit'])){
                            
                         </div>
                     </div>
-                    <div class="col-12 col-sm-6 col-lg-3 mb-8" data-aos="fade-up" data-aos-duration="1200">
-                        <div class="single-footer-widget">
-                            <h2 class="widget-title">Links úteis</h2>
-                            <ul class="widget-list">
-                                <li><a href="wishlist.html">Ajuda e Contato</a></li>
-                                <li><a href="contact.html">Termos e condições</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                   
                 
                    
                 </div>
@@ -494,13 +486,7 @@ if(isset($_POST['submit'])){
                     <!-- Contact Links End -->
 
                     <!-- Social Widget Start -->
-                    <div class="widget-social">
-                        <a title="Facebook" href="#"><i class="fa fa-facebook-f"></i></a>
-                        <a title="Twitter" href="#"><i class="fa fa-twitter"></i></a>
-                        <a title="Linkedin" href="#"><i class="fa fa-linkedin"></i></a>
-                        <a title="Youtube" href="#"><i class="fa fa-youtube"></i></a>
-                        <a title="Vimeo" href="#"><i class="fa fa-vimeo"></i></a>
-                    </div>
+                   
                     <!-- Social Widget Ende -->
                 </div>
                 <!-- Contact Links/Social Links End -->

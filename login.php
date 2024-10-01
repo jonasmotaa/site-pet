@@ -1,3 +1,13 @@
+<?php
+session_start();
+if((isset($_SESSION['email']) == true) and (isset($_SESSION['senha']) == true)){
+ 
+    header('Location: index.php'); // se nao fizer logout, retorna para login.php
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -210,15 +220,7 @@
                            
                         </div>
                     </div>
-                    <div class="col-12 col-sm-6 col-lg-3 mb-8" data-aos="fade-up" data-aos-duration="1200">
-                        <div class="single-footer-widget">
-                            <h2 class="widget-title">Links úteis</h2>
-                            <ul class="widget-list">
-                                <li><a href="wishlist.html">Ajuda e Contato</a></li>
-                                <li><a href="contact.html">Termos e condições</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                    
                 
                    
                 </div>

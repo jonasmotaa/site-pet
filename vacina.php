@@ -6,6 +6,12 @@ if((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true)
     header('Location: login.php'); // se nao existir sessao, retorna para login.php
 
 }
+include_once('assets/php/conexao.php');
+
+$email = $_SESSION['email'];
+$sql = "SELECT id FROM pet WHERE dono = '$email'";
+$result =  $mysqli->query($sql);
+
 
 
 ?>
@@ -73,7 +79,10 @@ if((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true)
                     <!-- Header Top Message Start -->
                     <div class="col-12 col-lg-6">
                         <div class="header-top-msg-wrapper">
+                       
+
                             <p class="header-top-message">Vacinas</p>
+                            
                         </div>
                     </div>
                     
@@ -107,7 +116,7 @@ if((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true)
                                
 
                                 <!-- Header My Account Button Start -->
-                                <a href="my-account.html" class="header-action-btn header-action-btn-wishlist">
+                                <a href="my-account.php" class="header-action-btn header-action-btn-wishlist">
                                     <i class="icon-user icons"></i>
                                 </a>
                                 <!-- Header My Account Button End -->
@@ -154,11 +163,36 @@ if((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true)
     <!-- Header Section End -->
 
     <!--Slider removido-->
-
+    
     <!-- Blog Grid Section Start -->
     <div class="section section-margin">
+        
+<!-- MENSAGEM DE ALERTA, caso a pessoa nao tenha nenhum pet cadastrado-->
+    <?php
+                        if($result->num_rows == 0){?>
+                        <!-- Header Top Start -->
+        <div class="header-top bg-primary">
+            <div class="container">
+                <div class="row align-items-center">
+
+                    <!-- Header Top Message Start -->
+                    <div class="col-12 col-lg-10">
+                        <div class="header-top-msg-wrapper">
+                       
+
+                            <p class="header-top-message">Você ainda não registrou nenhum Pet, nada a encontrar por aqui!</p>
+                            
+                        </div>
+                    </div>
+                    
+                    <!-- Header Top Message End -->
+
+                            <?php } ?>
+
+
         <div class="container">
             <div class="row row-cols-lg-3 row-cols-sm-2 row-cols-1 mb-n8">
+            
 
                 <div class="col mb-8">
                     <!-- Single Blog Start -->
@@ -231,15 +265,7 @@ if((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true)
                            
                         </div>
                     </div>
-                    <div class="col-12 col-sm-6 col-lg-3 mb-8" data-aos="fade-up" data-aos-duration="1200">
-                        <div class="single-footer-widget">
-                            <h2 class="widget-title">Links úteis</h2>
-                            <ul class="widget-list">
-                                <li><a href="wishlist.html">Ajuda e Contato</a></li>
-                                <li><a href="contact.html">Termos e condições</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                    
                 
                    
                 </div>
@@ -298,14 +324,9 @@ if((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true)
                             <li class="has-children">
                                 <a href="#">Páginas <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                 <ul class="dropdown">
-                                    <li><a href="consulta.html">Consulta</a></li>
-                                    <li><a href="vacina.html">Vacina</a></li>
-                                    <li><a href="atividade.html">Atividade</a></li>
-                                    <li><a href="historico medico.html">Histórico médico</a></li>
-                                    <li><a href="medicamento.html">Medicamentos</a></li>
+                                    <li><a href="consulta.php">Consulta</a></li>
 
-                                    <li><a href="my-account.html">Minha conta</a></li>
-                                    <li><a href="login.html">Login | Registro</a></li>
+                                    <li><a href="my-account.php">Minha conta</a></li>
                                 </ul>
                             </li>
                            
@@ -325,13 +346,7 @@ if((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true)
                     <!-- Contact Links End -->
 
                     <!-- Social Widget Start -->
-                    <div class="widget-social">
-                        <a title="Facebook" href="#"><i class="fa fa-facebook-f"></i></a>
-                        <a title="Twitter" href="#"><i class="fa fa-twitter"></i></a>
-                        <a title="Linkedin" href="#"><i class="fa fa-linkedin"></i></a>
-                        <a title="Youtube" href="#"><i class="fa fa-youtube"></i></a>
-                        <a title="Vimeo" href="#"><i class="fa fa-vimeo"></i></a>
-                    </div>
+                    
                     <!-- Social Widget Ende -->
                 </div>
                 <!-- Contact Links/Social Links End -->
