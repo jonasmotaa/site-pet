@@ -25,7 +25,7 @@ class VacinaTest extends TestCase {
         $email = 'simonblack@gmail.com';
 
         $resultMock = $this->createMock(mysqli_result::class);
-        $resultMock->method('num_rows')->willReturn(2);
+        $resultMock->num_rows = 2;
 
         $this->mysqli->method('query')->willReturn($resultMock);
 
@@ -70,7 +70,7 @@ class VacinaTest extends TestCase {
         $email = 'simonblack@gmail.com';
 
         $resultMock = $this->createMock(mysqli_result::class);
-        $resultMock->method('num_rows')->willReturn(2);
+        $resultMock->num_rows = 2;
         $this->mysqli->method('query')->willReturn($resultMock);
 
         $this->assertSame($resultMock, $this->vacinaFunctions->carregarVacinasDoUsuario($email, $this->mysqli));
@@ -88,7 +88,7 @@ class VacinaTest extends TestCase {
 
       
         $resultMock = $this->createMock(mysqli_result::class);
-        $resultMock->method('num_rows')->willReturn(0); 
+        $resultMock->num_rows = 0; 
 
        
         $this->mysqli->method('query')->willReturn($resultMock);

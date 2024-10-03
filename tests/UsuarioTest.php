@@ -16,7 +16,7 @@ class UsuarioTest extends TestCase {
         $senha = '1234';
 
         $resultMock = $this->createMock(mysqli_result::class);
-        $resultMock->method('num_rows')->willReturn(1);
+        $resultMock->num_rows = 1;
 
         $this->mysqli->method('query')->willReturn($resultMock);
 
@@ -28,7 +28,7 @@ class UsuarioTest extends TestCase {
         $senha = '1234';
 
         $resultMock = $this->createMock(mysqli_result::class);
-        $resultMock->method('num_rows')->willReturn(0);
+        $resultMock->num_rows = 0;
 
         $this->mysqli->method('query')->willReturn($resultMock);
 
