@@ -33,7 +33,7 @@ class PetTest extends TestCase {
             return $data[$calls++] ?? null; 
         });
         
-        $this->mysqli->method('query')->willReturn($resultMock);
+        // $this->mysqli->method('query')->willReturn($resultMock);
 
         $pets = obterPets($email, $this->mysqli);
 
