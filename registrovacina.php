@@ -37,8 +37,10 @@ if(isset($_POST['submit'])){
 
     mysqli_query($mysqli, "INSERT INTO vacina(nomevacina, descricao, data, vencimento, id)
                         VALUES ('$nome','$descricao','$data','$vencimento', '$id')");
-    echo "<script>alert('Vacina registrada com sucesso!');</script>";                       
 
+    header("Location: registrovacina.php?status=success");
+    exit();
+                       
 }
 ?>
 
@@ -545,6 +547,11 @@ if(isset($_POST['submit'])){
 
     <!-- Vendor JS -->
 
+    <?php if (isset($_GET['status']) && $_GET['status'] == 'success') { ?>
+    <script>
+        alert("Vacina registrada com sucesso!");
+    </script>
+    <?php } ?>
 
     <script src="assets/js/vendor/popper.min.js"></script>
     <script src="assets/js/vendor/bootstrap.min.js"></script>
