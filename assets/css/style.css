@@ -19176,6 +19176,16 @@ input[type=checkbox]:checked + label:after {
   background: #000000;
 }
 
+.row .align-items-center .mb-n4{
+  display: flex;
+  justify-content: center;
+}
+
+.copyright-content{
+  display: flex;
+  justify-content: center;
+}
+
 .copyright-content p {
   color: #000000;
   font-size: 15px;
