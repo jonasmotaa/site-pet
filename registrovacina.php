@@ -34,10 +34,11 @@ if(isset($_POST['submit'])){
     $row = $ids->fetch_assoc();
     $id = $row['id'];
     // aqui foi necessario converter o dado para uma string.
-  
 
     mysqli_query($mysqli, "INSERT INTO vacina(nomevacina, descricao, data, vencimento, id)
-    VALUES ('$nome','$descricao','$data','$vencimento', '$id')");
+                        VALUES ('$nome','$descricao','$data','$vencimento', '$id')");
+    echo "<script>alert('Vacina registrada com sucesso!');</script>";                       
+
 }
 ?>
 

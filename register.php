@@ -10,13 +10,14 @@ if(isset($_POST['submit'])){
 try{
     mysqli_query($mysqli, "INSERT INTO usuario(email, nome, senha)
     VALUES ('$email','$nome','$senha')");
+    echo "<script>alert('Usuário registrado com sucesso!');</script>";
 
 }catch (PDOException $e) {
     if ($e->errorInfo[1] == 1062) {
         // Código de erro 1062 é para duplicação de chave primária
-        echo "O email já foi cadastrado no sistema.";
+        echo "<script>alert('O email já foi cadastrado no sistema.');</script>";
     } else {
-        echo "Erro ao cadastrar: " . $e->getMessage();
+        echo "<script>alert('Erro ao cadastrar: " . $e->getMessage() . "');</script>";
     }
 }
 }
