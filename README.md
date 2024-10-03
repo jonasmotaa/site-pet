@@ -21,3 +21,11 @@ Após a instalação, é preciso iniciar o Apache e o MySQL para utilizar o phpM
 - Com o banco de dados selecionado, clique na aba **Importar** na parte superior.
 - Clique em Escolher arquivo e selecione o arquivo **.sql** que deseja importar
 
+## Passos para a Execução de Testes
+### Requerimentos
+É necessário que você tenha o [PHPUnit](https://phpunit.de/index.html) e o [Composer](https://getcomposer.org/) instalado em sua máquina.
+Após a instalação, escreva os seguintes comandos no terminal (certifique-se que você está no diretório principal):
+`vendor\bin\phpunit tests\PetTest.php`
+`vendor\bin\phpunit tests\UsuarioTest.php`
+`vendor\bin\phpunit tests\VacinaTest.php`
+
