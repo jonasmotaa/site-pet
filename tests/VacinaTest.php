@@ -47,7 +47,9 @@ class VacinaTest extends TestCase {
         $resultMock->method('fetch_assoc')->willReturn(['id' => 1]);
         // $this->mysqli->method('query')->willReturn($resultMock);
 
-        $this->assertTrue($this->vacinaFunctions->registrarVacina($dados_validos, $email, $this->mysqli));
+        $resultRegVac = $this->vacinaFunctions->registrarVacina($dados_validos, $email, $this->mysqli);
+        
+        $this->assertTrue($resultRegVac);
     }
 
 
@@ -61,8 +63,8 @@ class VacinaTest extends TestCase {
         ];
 
         $email = 'simonblack@gmail.com';
-
-        $this->assertFalse($this->vacinaFunctions->registrarVacina($dados_invalidos, $email, $this->mysqli));
+        $resultRegVac = $this->vacinaFunctions->registrarVacina($dados_invalidos, $email, $this->mysqli);
+        $this->assertFalse($resultRegVac);
     }
 
 
@@ -83,7 +85,8 @@ class VacinaTest extends TestCase {
         });
 
         $this->mysqli->method('query')->willReturn($resultMock);
-        $this->assertSame($resultMock, $this->vacinaFunctions->carregarVacinasDoUsuario($email, $this->mysqli));
+        $resultRegVac =  $this->vacinaFunctions->carregarVacinasDoUsuario($email, $this->mysqli);
+        $this->assertSame($resultMock, $resultRegVac);
     }
 
     public function testRegistrarVacinaSemPets() {
@@ -104,7 +107,7 @@ class VacinaTest extends TestCase {
         $this->mysqli->method('query')->willReturn($resultMock);
 
         $resultado = $this->vacinaFunctions->registrarVacina($dadosVacina, $email, $this->mysqli);
-        $this->assertFalse($resultado, "Vacina não deve ser registrada se não há pets cadastrados.");
+        $this->assertFalse($resultado);
     }
 }
 
