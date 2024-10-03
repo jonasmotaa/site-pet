@@ -3,6 +3,7 @@ use PHPUnit\Framework\TestCase;
 
 require 'assets/php/PetFunctions.php';
 
+
 class PetTest extends TestCase {
 
     private $mysqli;
@@ -21,12 +22,18 @@ class PetTest extends TestCase {
         $email = 'simonblack@gmail.com';
 
         $resultMock = $this->createMock(mysqli_result::class);
-        $resultMock->method('fetch_assoc')->will($this->onConsecutiveCalls(
-            ['apelido' => 'Rex', 'idade' => '2019-01-10', 'especie' => 'Cachorro', 'peso' => 20, 'altura' => 50],
-            null
-        ));
+        $resultMock->method('fetch_assoc')->willReturnCallback(function() {
+            static $calls = 0;
+        
+            $data = [
+                ['apelido' => 'Rex', 'idade' => '2019-01-10', 'especie' => 'Cachorro', 'peso' => 20, 'altura' => 50],
+                null
+            ];
+        
+            return $data[$calls++] ?? null; 
+        });
 
-        $this->mysqli->method('query')->willReturn($resultMock);
+        //$this->mysqli->method('query')->willReturn($resultMock);
 
         $pets = obterPets($email, $this->mysqli);
 
@@ -40,7 +47,7 @@ class PetTest extends TestCase {
         $especie = 'Cachorro';
         $peso = 30;
         $altura = 60;
-        $email = 'usuario@example.com';
+        $email = 'usuario@exemplo.com';
 
         $this->mysqli->method('query')->willReturn(true);
 
@@ -53,7 +60,7 @@ class PetTest extends TestCase {
         $especie = 'Cachorro';
         $peso = 30;
         $altura = 60;
-        $email = 'usuario@example.com';
+        $email = 'usuario@exemplo.com';
 
         $this->mysqli->method('query')->willReturn(false);
 

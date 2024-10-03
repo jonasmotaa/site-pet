@@ -25,7 +25,7 @@ class VacinaTest extends TestCase {
         $email = 'simonblack@gmail.com';
 
         $resultMock = $this->createMock(mysqli_result::class);
-        $resultMock->num_rows = 2;
+        // $resultMock->num_rows = 2;
 
         $this->mysqli->method('query')->willReturn($resultMock);
 
@@ -45,7 +45,7 @@ class VacinaTest extends TestCase {
 
         $resultMock = $this->createMock(mysqli_result::class);
         $resultMock->method('fetch_assoc')->willReturn(['id' => 1]);
-        $this->mysqli->method('query')->willReturn($resultMock);
+        // $this->mysqli->method('query')->willReturn($resultMock);
 
         $this->assertTrue($this->vacinaFunctions->registrarVacina($dados_validos, $email, $this->mysqli));
     }
@@ -70,9 +70,19 @@ class VacinaTest extends TestCase {
         $email = 'simonblack@gmail.com';
 
         $resultMock = $this->createMock(mysqli_result::class);
-        $resultMock->num_rows = 2;
-        $this->mysqli->method('query')->willReturn($resultMock);
+        $vacinas = [
+            ['id' => 1, 'nome' => 'Vacina A'],
+            ['id' => 2, 'nome' => 'Vacina B'],
+        ];
+        $index = 0;
+        $resultMock->method('fetch_assoc')->willReturnCallback(function() use (&$index, $vacinas) {
+            if ($index < count($vacinas)) {
+                return $vacinas[$index++];
+            }
+            return null;
+        });
 
+        $this->mysqli->method('query')->willReturn($resultMock);
         $this->assertSame($resultMock, $this->vacinaFunctions->carregarVacinasDoUsuario($email, $this->mysqli));
     }
 
@@ -88,7 +98,7 @@ class VacinaTest extends TestCase {
 
       
         $resultMock = $this->createMock(mysqli_result::class);
-        $resultMock->num_rows = 0; 
+        $resultMock->method('fetch_assoc')->willReturn(null);
 
        
         $this->mysqli->method('query')->willReturn($resultMock);

@@ -1,6 +1,6 @@
 <?php
 
-include_once('assets/php/conexao.php');
+include('assets/php/conexao.php');
 
 class VacinaFunctions {
     public function verificarSessao($session) {

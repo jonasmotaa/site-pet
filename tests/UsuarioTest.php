@@ -8,6 +8,7 @@ class UsuarioTest extends TestCase {
     private $mysqli;
 
     protected function setUp(): void {
+       
         $this->mysqli = $this->createMock(mysqli::class);
     }
 
@@ -16,9 +17,10 @@ class UsuarioTest extends TestCase {
         $senha = '1234';
 
         $resultMock = $this->createMock(mysqli_result::class);
-        $resultMock->num_rows = 1;
+        // $resultMock->num_rows = 1;
+        $resultMock->method('fetch_assoc')->willReturn(['id' => 1]);
 
-        $this->mysqli->method('query')->willReturn($resultMock);
+        // $this->mysqli->method('query')->willReturn($resultMock);
 
         $this->assertTrue(loginUsuario($email, $senha, $this->mysqli));
     }
@@ -28,9 +30,9 @@ class UsuarioTest extends TestCase {
         $senha = '1234';
 
         $resultMock = $this->createMock(mysqli_result::class);
-        $resultMock->num_rows = 0;
+        $resultMock->method('fetch_assoc')->willReturn(null);
 
-        $this->mysqli->method('query')->willReturn($resultMock);
+        // $this->mysqli->method('query')->willReturn($resultMock);
 
         $this->assertFalse(loginUsuario($email, $senha, $this->mysqli));
     }
@@ -40,7 +42,7 @@ class UsuarioTest extends TestCase {
         $email = 'simonblack@gmail.com';
         $senha = '1234';
 
-        $this->mysqli->method('query')->willReturn(true);
+        // $this->mysqli->method('query')->willReturn(true);
 
         $this->assertTrue(cadastrarUsuario($nome, $email, $senha, $this->mysqli));
     }
@@ -60,7 +62,7 @@ class UsuarioTest extends TestCase {
         $email = 'simonblack@gmail.com';
         $senha = '';
 
-        $this->mysqli->method('query')->willReturn(false);
+        // $this->mysqli->method('query')->willReturn(false);
 
         $this->assertFalse(cadastrarUsuario($nome, $email, $senha, $this->mysqli));
     }

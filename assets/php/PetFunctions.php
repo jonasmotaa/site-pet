@@ -1,4 +1,5 @@
 <?php
+include('assets/php/conexao.php');
 
 function calcularIdade($dataNascimento) {
     $dataNasc = new DateTime($dataNascimento);
