@@ -325,7 +325,9 @@ $result =  $mysqli->query($sql);
                                 <a href="#">Páginas <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                 <ul class="dropdown">
                                     <li><a href="consulta.php">Consulta</a></li>
-
+                                      <!-- <li><a href="atividade.html">Atividade</a></li> -->
+                                    <!-- <li><a href="historico medico.html">Histórico médico</a></li> -->
+                                    <!-- <li><a href="medicamento.html">Medicamentos</a></li> -->
                                     <li><a href="my-account.php">Minha conta</a></li>
                                 </ul>
                             </li>
