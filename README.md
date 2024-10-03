@@ -3,7 +3,7 @@ A aplicação "PetCare" se trata de um serviço de saúde para pets, em que é p
 
 ## Objetivo
 O objetivo principal é criar uma aplicação funcional que se utilize dos padrões de projeto:
-- Publish/Subscribe
+- Observer
 - Proxy
 
 ## Requerimentos
