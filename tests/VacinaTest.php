@@ -8,12 +8,14 @@ class VacinaTest extends TestCase {
     private $mysqli;
     private $vacinaFunctions;
 
+    // criação de um Mock para testes
     protected function setUp(): void {
         // simulando a conexão com o banco de dados para os testes
         $this->mysqli = $this->createMock(mysqli::class);
         $this->vacinaFunctions = new VacinaFunctions();
     }
 
+    // teste para verificar sessão
     public function testVerificarSessao() {
         $email = 'simonblack@gmail.com';
         $senha = '1234';
@@ -21,6 +23,7 @@ class VacinaTest extends TestCase {
         $this->assertFalse($this->vacinaFunctions->verificarSessao([]));
     }
 
+    // teste para obter pets de usuário (necessário para a funcionalidade de cadastro de vacinas)
     public function testBuscarPetsDoUsuario() {
         $email = 'simonblack@gmail.com';
 
@@ -32,6 +35,7 @@ class VacinaTest extends TestCase {
         $this->assertSame($resultMock, $this->vacinaFunctions->buscarPetsDoUsuario($email, $this->mysqli));
     }
 
+    // teste para registro de vacina com sucesso
     public function testRegistrarVacinaSucesso() {
         $dados_validos = [
             'nome' => 'V4 felina',
@@ -52,7 +56,7 @@ class VacinaTest extends TestCase {
         $this->assertTrue($resultRegVac);
     }
 
-
+    // teste para falha de registro de vacina
     public function testRegistrarVacinaFalha() {
         $dados_invalidos = [
             'nome' => '',
@@ -67,7 +71,7 @@ class VacinaTest extends TestCase {
         $this->assertFalse($resultRegVac);
     }
 
-
+    // teste para carregamento de vacinas registradas do usuário (verifica se o resultado é igual)
     public function testCarregarVacinasDoUsuario() {
         $email = 'simonblack@gmail.com';
 
@@ -89,6 +93,7 @@ class VacinaTest extends TestCase {
         $this->assertSame($resultMock, $resultRegVac);
     }
 
+    // tesste para verificar o resultado de registro de vacina sem pet fornecido (é para falhar)
     public function testRegistrarVacinaSemPets() {
         $dadosVacina = [
             'nome' => 'Vacina Qualquer',

@@ -7,11 +7,13 @@ class UsuarioTest extends TestCase {
 
     private $mysqli;
 
+    // criação de um Mock para testes
     protected function setUp(): void {
        
         $this->mysqli = $this->createMock(mysqli::class);
     }
 
+    // teste para verificar sucesso no LogIn
     public function testLoginUsuarioSucesso() {
         $email = 'simonblack@gmail.com';
         $senha = '1234';
@@ -25,9 +27,11 @@ class UsuarioTest extends TestCase {
         $this->assertTrue(loginUsuario($email, $senha, $this->mysqli));
     }
 
+
+    // teste para verificar falha no LogIn
     public function testLoginUsuarioFalha() {
         $email = 'simonblack@gmail.com';
-        $senha = '1234';
+        $senha = '12345';
 
         $resultMock = $this->createMock(mysqli_result::class);
         $resultMock->method('fetch_assoc')->willReturn(null);
@@ -37,9 +41,10 @@ class UsuarioTest extends TestCase {
         $this->assertFalse(loginUsuario($email, $senha, $this->mysqli));
     }
 
+    // teste para verificar sucesso no registro de novo usuário
     public function testCadastroUsuarioSucesso() {
-        $nome = 'Simon Black';
-        $email = 'simonblack@gmail.com';
+        $nome = 'Simon';
+        $email = 'simonblack0@gmail.com';
         $senha = '1234';
 
         // $this->mysqli->method('query')->willReturn(true);
@@ -47,6 +52,7 @@ class UsuarioTest extends TestCase {
         $this->assertTrue(cadastrarUsuario($nome, $email, $senha, $this->mysqli));
     }
 
+    // teste para verificar se há duplicação de cadastro (criar um usuário que já existe)
     public function testCadastroUsuarioDuplicado() {
         $nome = 'Simon Black';
         $email = 'simonblack@gmail.com';
@@ -57,6 +63,7 @@ class UsuarioTest extends TestCase {
         $this->assertSame('duplicado', cadastrarUsuario($nome, $email, $senha, $this->mysqli));
     }
 
+    // teste para verificar falha no cadastro (dados incompletos)
     public function testCadastroUsuarioFalha() {
         $nome = 'Simon Black';
         $email = 'simonblack@gmail.com';

@@ -2,6 +2,7 @@
 
 include('assets/php/conexao.php');
 
+// função para verificar se os dados de login são validos
 function loginUsuario($email, $senha, $mysqli) {
     $sql = "SELECT * FROM usuario WHERE email = '$email' and senha = '$senha'";
     $result = $mysqli->query($sql);
@@ -12,6 +13,7 @@ function loginUsuario($email, $senha, $mysqli) {
     return false;
 }
 
+// função para cadastrar um usuário
 function cadastrarUsuario($nome, $email, $senha, $mysqli) {
     if (empty($nome) || empty($email) || empty($senha)) {
         return false; 

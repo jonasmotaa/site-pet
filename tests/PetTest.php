@@ -8,16 +8,19 @@ class PetTest extends TestCase {
 
     private $mysqli;
 
+    // criação de um Mock para testes
     protected function setUp(): void {
         $this->mysqli = $this->createMock(mysqli::class);
     }
 
+    // teste para verificar se o calculo da idade do pet está correto
     public function testCalcularIdade() {
         $dataNascimento = '2020-05-10';
         $idade = calcularIdade($dataNascimento);
         $this->assertEquals(4, $idade); 
     }
 
+    // teste para verificar se está retornando o número correto de pets de um usuário.
     public function testObterPets() {
         $email = 'simonblack@gmail.com';
 
@@ -26,7 +29,7 @@ class PetTest extends TestCase {
             static $calls = 0;
         
             $data = [
-                ['apelido' => 'Rex', 'idade' => '2019-01-10', 'especie' => 'Cachorro', 'peso' => 20, 'altura' => 50],
+                ['apelido' => 'Mel', 'idade' => '2013-01-01', 'especie' => 'Gato', 'peso' => 4, 'altura' => 60],
                 null
             ];
         
@@ -41,6 +44,7 @@ class PetTest extends TestCase {
         $this->assertEquals('Rex', $pets[0]['apelido']);
     }
 
+    // teste para verificar sucesso na tentativa de adicionar um pet.
     public function testAdicionarPetSucesso() {
         $nome = 'Rex';
         $idade = '2020-01-01';
@@ -54,6 +58,7 @@ class PetTest extends TestCase {
         $this->assertTrue(adicionarPet($nome, $idade, $especie, $peso, $altura, $email, $this->mysqli));
     }
 
+     // teste para verificar falha na tentativa de adicionar um pet.
     public function testAdicionarPetFalha() {
         $nome = 'Rex';
         $idade = '2020-01-01';
